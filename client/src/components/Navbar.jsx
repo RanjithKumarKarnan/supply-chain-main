@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Heart, ShoppingCart, Menu, X, Search, User } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,22 +29,24 @@ const Navbar = () => {
         <>
             {/* Main Navbar */}
             <div
-                className={`w-full fixed top-0 left-0 z-50 transform transition-all duration-500 ease-out ${showNavbar ? "translate-y-0" : "-translate-y-full"
-                    } ${isScrolled
+                className={`w-full fixed top-0 left-0 z-50 transform transition-all duration-500 ease-out ${
+                    showNavbar ? "translate-y-0" : "-translate-y-full"
+                } ${
+                    isScrolled
                         ? "bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-100"
                         : "bg-white"
-                    }`}
+                }`}
             >
                 {/* Animated top border */}
                 <div className="h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent"></div>
 
                 <div className="flex items-center justify-between px-6 lg:px-20 py-4 max-w-7xl mx-auto">
-                    {/* Logo with hover effect */}
+                    {/* Logo */}
                     <div className="flex-shrink-0 relative group">
                         <a href="#" className="block">
                             <div className="relative">
                                 <img
-                                    src="/logo.jpeg" 
+                                    src="/comp-logo.png"
                                     alt="Company Logo"
                                     className="h-8 sm:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
                                 />
@@ -52,7 +54,6 @@ const Navbar = () => {
                             </div>
                         </a>
                     </div>
-
 
                     {/* Center Navigation - Desktop */}
                     <nav className="hidden lg:flex items-center space-x-12">
@@ -70,40 +71,21 @@ const Navbar = () => {
                         ))}
                     </nav>
 
-                    {/* Right Side Actions */}
-                    {/* <div className="flex items-center">
-                        <button className="hidden md:flex p-2 rounded-full hover:bg-gray-100 transition-colors duration-300 group">
-                            <Search className="w-5 h-5 text-gray-600 group-hover:text-red-600 transition-colors duration-300" />
-                        </button>
-                        <button className="hidden md:flex p-2 rounded-full hover:bg-gray-100 transition-colors duration-300 group">
-                            <User className="w-5 h-5 text-gray-600 group-hover:text-red-600 transition-colors duration-300" />
-                        </button>
-                        <button className="relative p-2 rounded-full hover:bg-red-50 transition-all duration-300 group">
-                            <Heart className="w-5 h-5 text-gray-600 group-hover:text-red-600 group-hover:scale-110 transition-all duration-300" />
-                            <div className="absolute top-1 right-1 w-2 h-2 bg-red-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </button>
-                        <button className="relative p-2 rounded-full hover:bg-red-50 transition-all duration-300 group">
-                            <ShoppingCart className="w-5 h-5 text-gray-600 group-hover:text-red-600 group-hover:scale-110 transition-all duration-300" />
-                            <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                                0
-                            </span>
-                        </button>
-                        <button
-                            className="lg:hidden relative p-2 rounded-full hover:bg-red-50 transition-colors duration-300"
-                            onClick={() => setIsMenuOpen(true)}
-                        >
-                            <Menu className="w-6 h-6 text-gray-800" />
-                        </button>
-                    </div> */}
+                    {/* Mobile Menu Button */}
+                    <button
+                        className="lg:hidden relative p-2 rounded-full hover:bg-red-50 transition-colors duration-300"
+                        onClick={() => setIsMenuOpen(true)}
+                    >
+                        <Menu className="w-6 h-6 text-gray-800" />
+                    </button>
                 </div>
             </div>
 
             {/* Mobile Menu Overlay */}
             <div
-                className={`fixed inset-0 z-50 lg:hidden transition-all duration-500 ${isMenuOpen
-                        ? "opacity-100 visible"
-                        : "opacity-0 invisible"
-                    }`}
+                className={`fixed inset-0 z-50 lg:hidden transition-all duration-500 ${
+                    isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+                }`}
             >
                 {/* Backdrop */}
                 <div
@@ -113,8 +95,9 @@ const Navbar = () => {
 
                 {/* Menu Panel */}
                 <div
-                    className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white transform transition-transform duration-500 ${isMenuOpen ? "translate-x-0" : "translate-x-full"
-                        }`}
+                    className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white transform transition-transform duration-500 ${
+                        isMenuOpen ? "translate-x-0" : "translate-x-full"
+                    }`}
                 >
                     {/* Header */}
                     <div className="flex items-center justify-between p-6 border-b border-gray-100">
@@ -142,21 +125,6 @@ const Navbar = () => {
                             </a>
                         ))}
                     </nav>
-
-                    {/* Mobile Actions */}
-                    <div className="p-6 border-t border-gray-100 space-y-4">
-                        <button className="flex items-center p-3 w-full rounded-xl hover:bg-gray-50 transition-colors duration-300">
-                            <Search className="w-5 h-5 text-gray-600 mr-3" />
-                            <span className="text-gray-800">Search</span>
-                        </button>
-                        <button className="flex items-center p-3 w-full rounded-xl hover:bg-gray-50 transition-colors duration-300">
-                            <User className="w-5 h-5 text-gray-600 mr-3" />
-                            <span className="text-gray-800">Account</span>
-                        </button>
-                        {/* <button className="w-full bg-red-600 text-white py-4 rounded-xl font-semibold hover:bg-red-700 transition-all duration-300 hover:shadow-lg">
-                            Get Started
-                        </button> */}
-                    </div>
                 </div>
             </div>
         </>
