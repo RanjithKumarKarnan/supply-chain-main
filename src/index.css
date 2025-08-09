@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Fortuner';
+  src: url('/fonts/FortunerHeavyPersonalUse.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
