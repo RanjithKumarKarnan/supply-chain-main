@@ -28,7 +28,7 @@ const TrustedCompany = () => {
                                 key={index}
                                 src={logo}
                                 alt={`Trusted Logo ${index + 1}`}
-                                className="h-16 sm:h-20 mx-6 object-contain grayscale rounded-4xl hover:grayscale-0 transition duration-300 ease-in-out"
+                                className="h-16 sm:h-18 mx-6 object-contain rounded-4xl transition duration-300 ease-in-out"
                             />
                         ))}
                     </div>

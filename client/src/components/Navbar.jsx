@@ -10,20 +10,34 @@ const Navbar = () => {
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
-
             if (currentScrollY > lastScrollY && currentScrollY > 100) {
                 setShowNavbar(false);
             } else {
                 setShowNavbar(true);
             }
-
             setIsScrolled(currentScrollY > 50);
             setLastScrollY(currentScrollY);
         };
-
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, [lastScrollY]);
+
+    // Smooth scroll function
+    const handleSmoothScroll = (e, targetId) => {
+        e.preventDefault();
+        const section = document.querySelector(targetId);
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+        }
+        setIsMenuOpen(false); // close mobile menu after click
+    };
+
+    // Navigation links
+    const navLinks = [
+        { label: "About", link: "#about" },
+        { label: "Products", link: "#products" },
+        { label: "Contact", link: "#contact" }
+    ];
 
     return (
         <>
@@ -37,7 +51,6 @@ const Navbar = () => {
                         : "bg-white"
                 }`}
             >
-                {/* Animated top border */}
                 <div className="h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent"></div>
 
                 <div className="flex items-center justify-between px-6 lg:px-20 py-4 max-w-7xl mx-auto">
@@ -55,16 +68,17 @@ const Navbar = () => {
                         </a>
                     </div>
 
-                    {/* Center Navigation - Desktop */}
+                    {/* Desktop Navigation */}
                     <nav className="hidden lg:flex items-center space-x-12">
-                        {["About", "Products", "Contact"].map((item, index) => (
+                        {navLinks.map((item, index) => (
                             <a
-                                key={item}
-                                href="#"
+                                key={item.label}
+                                href={item.link}
+                                onClick={(e) => handleSmoothScroll(e, item.link)}
                                 className="relative group text-gray-800 font-medium text-lg transition-all duration-300 hover:text-red-600"
                                 style={{ animationDelay: `${index * 0.1}s` }}
                             >
-                                <span className="relative z-10">{item}</span>
+                                <span className="relative z-10">{item.label}</span>
                                 <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-400 group-hover:w-full transition-all duration-300"></div>
                                 <div className="absolute -inset-2 bg-red-50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
                             </a>
@@ -112,15 +126,15 @@ const Navbar = () => {
 
                     {/* Navigation Links */}
                     <nav className="p-6 space-y-2">
-                        {["About", "Products", "Contact"].map((item, index) => (
+                        {navLinks.map((item, index) => (
                             <a
-                                key={item}
-                                href="#"
-                                onClick={() => setIsMenuOpen(false)}
+                                key={item.label}
+                                href={item.link}
+                                onClick={(e) => handleSmoothScroll(e, item.link)}
                                 className="flex items-center p-4 rounded-xl hover:bg-red-50 hover:text-red-600 transition-all duration-300 font-medium text-gray-800 group"
                                 style={{ animationDelay: `${index * 0.1}s` }}
                             >
-                                <span>{item}</span>
+                                <span>{item.label}</span>
                                 <div className="ml-auto w-2 h-2 bg-red-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </a>
                         ))}

@@ -1,42 +1,38 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-    
+
+// Updated order — Apparel first, then Drinkware
 const cards = [
     {
-        title: "Drinkware",
-        image: "/botles.jpg",
-        span: "Hydration & more",
-        bgColor: "bg-[#bf272f]",
-        hoverColor: "hover:bg-[#9e1e26]",
+        title: "Apparel",
+        image: "/apparel.jpg",
+        span: "Tees, hats & more",
+        bgColor: "bg-green-600",
     },
     {
         title: "Bags",
         image: "/bags.jpg",
         span: "For office, gym, travel",
         bgColor: "bg-[#00bfff]",
-        hoverColor: "hover:bg-[#009ccc]",
     },
     {
         title: "Office",
         image: "/office.jpg",
         span: "Desks, pens & notes",
         bgColor: "bg-purple-600",
-        hoverColor: "hover:bg-purple-700",
     },
     {
         title: "Tech",
         image: "/tech.jpg",
         span: "Headphones & gadgets",
         bgColor: "bg-orange-500",
-        hoverColor: "hover:bg-orange-600",
     },
     {
-        title: "Apparel",
-        image: "/apparel.jpg",
-        span: "Tees, hats & more",
-        bgColor: "bg-green-600",
-        hoverColor: "hover:bg-green-700",
+        title: "Drinkware",
+        image: "/botles.jpg",
+        span: "Hydration & more",
+        bgColor: "bg-[#bf272f]",
     },
 ];
 
@@ -46,12 +42,15 @@ export default function TopProducts() {
     }, []);
 
     return (
-        <section className="relative w-full min-h-screen flex items-center justify-center px-6 sm:px-10 lg:px-20 py-16 bg-white overflow-hidden">
-            <div className="w-full max-w-6xl mx-auto">
+        <section
+            id="products"
+            className="relative w-full min-h-screen flex items-center justify-center px-6 sm:px-10 lg:px-20 py-16 bg-white overflow-hidden"
+        >
+            <div className="w-full max-w-5xl mx-auto">
                 {/* Section Title */}
                 <div className="mb-12 text-center">
                     <h3
-                        className="text-[#000] text-3xl sm:text-4xl font-extrabold uppercase tracking-wide"
+                        className="text-[#000] text-4xl md:text-5xl font-extrabold uppercase tracking-wide"
                         style={{ fontFamily: "Fortuner" }}
                     >
                         Top Products
@@ -80,7 +79,7 @@ export default function TopProducts() {
 function FadeCard({ card, delay }) {
     return (
         <div
-            className="relative rounded-2xl overflow-hidden shadow-xl group h-[300px] transition-all duration-500"
+            className="relative rounded-2xl overflow-hidden shadow-xl h-[300px]"
             data-aos="fade-zoom-in"
             data-aos-easing="ease-in-back"
             data-aos-delay={delay}
@@ -91,27 +90,16 @@ function FadeCard({ card, delay }) {
                 <img
                     src={card.image}
                     alt={card.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover"
                 />
             </div>
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-opacity-30 group-hover:bg-opacity-50 z-10 transition duration-500" />
-
-            {/* Content */}
+            {/* Permanent Title Overlay with Same BG */}
             <div
-                className={`absolute bottom-0 left-0 w-full px-6 py-5 z-20 flex flex-col sm:flex-row justify-between items-start sm:items-end text-white transition-colors duration-500 ${card.bgColor} ${card.hoverColor}`}
+                className={`absolute bottom-0 left-0 w-full px-6 py-8 text-white ${card.bgColor}`}
             >
-                <div>
-                    <h4 className="text-xl font-bold mb-1">{card.title}</h4>
-                    <p className="text-sm font-medium opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                        {card.span}
-                    </p>
-                </div>
-
-                <button className="mt-3 sm:mt-0 bg-white text-black font-semibold px-5 py-2 rounded-full text-sm shadow-md opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                    Shop Now →
-                </button>
+                <h2 className="text-2xl font-bold">{card.title}</h2>
+                {/* <p className="text-sm">{card.span}</p> */}
             </div>
         </div>
     );
