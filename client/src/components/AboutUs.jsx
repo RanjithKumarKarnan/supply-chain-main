@@ -9,6 +9,7 @@ const AboutUs = () => {
 
     return (
         <section
+        id="about"
             className="relative w-full bg-cover bg-center bg-no-repeat py-20 px-6 sm:px-10 lg:px-20 text-white"
             style={{
                 backgroundImage: "url('/abouts.png')",
@@ -28,7 +29,7 @@ const AboutUs = () => {
                     {/* Title */}
                     <div className="mb-8">
                         <h3
-                            className="text-3xl sm:text-4xl font-extrabold uppercase tracking-wide"
+                            className="text-4xl md:text-5xl font-extrabold uppercase tracking-wide"
                             style={{ fontFamily: 'Fortuner', color: '#000000' }}
                         >
                             About Us
@@ -46,14 +47,11 @@ const AboutUs = () => {
                         With SupplyCHAIN, you get more than a supplier — you get a partner committed to making your brand unforgettable.
                     </p>
 
-                    <button className="bg-[#bf272f] hover:bg-[#a61e24] text-white font-bold py-3 px-6 rounded-full shadow-md transition duration-300">
-                        Learn More
-                    </button>
                 </div>
 
                 {/* Right: Image */}
                 <div className="w-full md:w-1/2">
-                    <div className="relative w-full h-80 sm:h-96 rounded-lg overflow-hidden shadow-xl group">
+                    <div className="relative w-full h-80 sm:h-140 rounded-lg overflow-hidden shadow-xl group">
                         <img
                             src="/about-us.jpg"
                             alt="About Us"

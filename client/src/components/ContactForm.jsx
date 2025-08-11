@@ -41,13 +41,14 @@ const ContactForm = () => {
 
   return (
     <section
+    id="contact"
       className="relative w-full min-h-screen flex items-center justify-center px-6 sm:px-10 lg:px-20 py-20 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/contact.png')" }}
+      style={{ backgroundImage: "url('/contact.jpg')" }}
     >
       <Toaster position="top-center" />
       <div className="absolute inset-0 bg-opacity-40 z-0" />
 
-      <div className="relative z-10 w-full max-w-4xl backdrop-blur-lg bg-white/60 border border-white/30 shadow-2xl rounded-xl p-6 sm:p-12">
+      <div className="relative z-10 w-full max-w-4xl backdrop-blur-lg bg-white/80 border border-white/30 shadow-2xl rounded-xl p-6 sm:p-12">
         <div className="mb-12 text-center">
           <h2 className="text-4xl sm:text-5xl font-extrabold uppercase text-[#000]" style={{ fontFamily: 'Fortuner' }}>
             Get In Touch
