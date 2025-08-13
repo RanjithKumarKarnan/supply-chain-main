@@ -6,32 +6,41 @@ const TrustedCompany = () => {
         "/trusted-logo/AlfaDAO Logo.jpg",
         "/trusted-logo/Altlier-logo.png",
         "/trusted-logo/Bera Baddies Logo.png",
-        // "/trusted-logo/Berachain Foundation.svg",
         "/trusted-logo/Doge Logo.svg",
         "/trusted-logo/Mew Logo.jpg",
         "/trusted-logo/narra.png",
-        // "/trusted-logo/RaveDAO Logo.avif",
         "/trusted-logo/token.svg",
         "/trusted-logo/wyk logo.webp",
     ];
 
     return (
-        <div className="w-full bg-white py-12 px-0 sm:px-0 overflow-hidden">
-            <h5 className="text-[#bf272f] tracking-wide font-bold text-lg sm:text-xl mb-8 text-center uppercase">
-                Trusted by 
+        <div className="w-full bg-white py-16 overflow-hidden">
+            <h5 className="text-[#bf272f] tracking-wide font-bold text-lg sm:text-xl mb-10 text-center uppercase">
+                Trusted by
             </h5>
-            <div className="relative w-full">
-                <div className="marquee">
-                    <div className="marquee-content">
-                        {logos.concat(logos).map((logo, index) => (
+
+            <div className="marquee" role="region" aria-label="Trusted company logos">
+                <div className="marquee-track">
+                    {/* First sequence */}
+                    {logos.map((logo, index) => (
+                        <div className="logo-item" key={`logo-a-${index}`}>
                             <img
-                                key={index}
                                 src={logo}
                                 alt={`Trusted Logo ${index + 1}`}
-                                className="h-16 sm:h-18 mx-6 object-contain rounded-4xl transition duration-300 ease-in-out"
+                                className="logo-img"
                             />
-                        ))}
-                    </div>
+                        </div>
+                    ))}
+                    {/* Duplicate sequence for seamless loop */}
+                    {logos.map((logo, index) => (
+                        <div className="logo-item" key={`logo-b-${index}`} aria-hidden="true">
+                            <img
+                                src={logo}
+                                alt=""
+                                className="logo-img"
+                            />
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

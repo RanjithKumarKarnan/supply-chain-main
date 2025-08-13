@@ -1,22 +1,87 @@
+/* Outer container */
 .marquee {
-  overflow: hidden;
+  --logo-max-height: 100px;
+  /* Make logos a little bigger */
+  --gap: clamp(24px, 4vw, 48px);
+  /* Responsive spacing between logos */
+  --duration: 35s;
+  /* Scroll speed (bigger = slower) */
+
   position: relative;
+  overflow: hidden;
+  width: 100%;
+
+  /* Nice edge fade (optional, comment out if undesired) */
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%);
 }
 
-.marquee-content {
+/* Track with two identical sequences back-to-back */
+.marquee-track {
   display: flex;
-  animation: scroll 25s linear infinite;
+  align-items: center;
+  gap: var(--gap);
+  width: max-content;
+  /* Let content define width */
+  will-change: transform;
+  animation: marquee-scroll var(--duration) linear infinite;
 }
 
-.marquee:hover .marquee-content {
-  animation-play-state: paused; /* Pause on hover */
+/* Pause on hover */
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
 }
 
-@keyframes scroll {
+/* Each logo wrapper keeps consistent height */
+.logo-item {
+  flex: 0 0 auto;
+  height: var(--logo-max-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image sizing: same height, preserve aspect */
+.logo-img {
+  height: 100%;
+  width: auto;
+  max-width: 200px;
+  /* Prevent super-wide logos from stretching things */
+  object-fit: contain;
+  border-radius: 50%;
+  /* Rounded corners like before */
+  transition: filter 200ms ease;
+}
+
+/* Optional: subtle hover pop (remove if you want zero effects) */
+/* .logo-img:hover { filter: none; } */
+
+/* Seamless loop: because the track contains two identical sequences,
+   moving -50% lands exactly at the start of the second one. */
+@keyframes marquee-scroll {
   0% {
-    transform: translateX(0%);
+    transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
+  }
+}
+
+/* Responsiveness */
+@media (max-width: 640px) {
+  .marquee {
+    --logo-max-height: 72px;
+    --gap: 20px;
+    --duration: 28s;
+    /* slightly faster on mobile */
+  }
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    transform: none;
   }
 }
