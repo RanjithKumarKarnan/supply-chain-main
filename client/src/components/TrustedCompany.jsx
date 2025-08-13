@@ -13,30 +13,20 @@ const TrustedCompany = () => {
         "/trusted-logo/wyk logo.webp",
     ];
 
+    // Repeat enough times to cover at least 6 screens width
+    const repeatedLogos = Array(10).fill(logos).flat();
+
     return (
-        <div className="w-full bg-white py-16 overflow-hidden">
-            <h5 className="text-[#bf272f] tracking-wide font-bold text-lg sm:text-xl mb-10 text-center uppercase">
-                Trusted by
-            </h5>
+        <div className="trusted-wrapper">
+            <h5 className="trusted-title">Trusted by</h5>
 
             <div className="marquee" role="region" aria-label="Trusted company logos">
                 <div className="marquee-track">
-                    {/* First sequence */}
-                    {logos.map((logo, index) => (
-                        <div className="logo-item" key={`logo-a-${index}`}>
+                    {repeatedLogos.map((logo, index) => (
+                        <div className="logo-item" key={index}>
                             <img
                                 src={logo}
                                 alt={`Trusted Logo ${index + 1}`}
-                                className="logo-img"
-                            />
-                        </div>
-                    ))}
-                    {/* Duplicate sequence for seamless loop */}
-                    {logos.map((logo, index) => (
-                        <div className="logo-item" key={`logo-b-${index}`} aria-hidden="true">
-                            <img
-                                src={logo}
-                                alt=""
                                 className="logo-img"
                             />
                         </div>

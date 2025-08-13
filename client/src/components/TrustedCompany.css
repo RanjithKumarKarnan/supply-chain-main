@@ -1,38 +1,48 @@
-/* Outer container */
+.trusted-wrapper {
+  width: 100%;
+  background: #fff;
+  padding: 4rem 0;
+  overflow: hidden;
+}
+
+.trusted-title {
+  color: #bf272f;
+  font-weight: 700;
+  text-align: center;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  letter-spacing: 1px;
+}
+
+/* Marquee container */
 .marquee {
-  --logo-max-height: 100px;
-  /* Make logos a little bigger */
-  --gap: clamp(24px, 4vw, 48px);
-  /* Responsive spacing between logos */
-  --duration: 35s;
-  /* Scroll speed (bigger = slower) */
+  --logo-max-height: 80px;
+  --gap: clamp(32px, 5vw, 64px);
+  --duration: 30s;
+  /* Super long for continuous effect */
 
   position: relative;
   overflow: hidden;
   width: 100%;
-
-  /* Nice edge fade (optional, comment out if undesired) */
   -webkit-mask-image: linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%);
 }
 
-/* Track with two identical sequences back-to-back */
 .marquee-track {
   display: flex;
   align-items: center;
   gap: var(--gap);
   width: max-content;
-  /* Let content define width */
   will-change: transform;
   animation: marquee-scroll var(--duration) linear infinite;
 }
 
-/* Pause on hover */
 .marquee:hover .marquee-track {
   animation-play-state: paused;
 }
 
-/* Each logo wrapper keeps consistent height */
+/* Logo Items */
 .logo-item {
   flex: 0 0 auto;
   height: var(--logo-max-height);
@@ -41,23 +51,20 @@
   justify-content: center;
 }
 
-/* Image sizing: same height, preserve aspect */
 .logo-img {
   height: 100%;
   width: auto;
-  max-width: 200px;
-  /* Prevent super-wide logos from stretching things */
+  max-width: 220px;
   object-fit: contain;
   border-radius: 50%;
-  /* Rounded corners like before */
-  transition: filter 200ms ease;
+  transition: transform 0.3s ease;
 }
 
-/* Optional: subtle hover pop (remove if you want zero effects) */
-/* .logo-img:hover { filter: none; } */
+.logo-img:hover {
+  transform: scale(1.05);
+}
 
-/* Seamless loop: because the track contains two identical sequences,
-   moving -50% lands exactly at the start of the second one. */
+/* Keyframes for continuous movement */
 @keyframes marquee-scroll {
   0% {
     transform: translateX(0);
@@ -68,20 +75,11 @@
   }
 }
 
-/* Responsiveness */
+/* Responsive adjustments */
 @media (max-width: 640px) {
   .marquee {
-    --logo-max-height: 72px;
+    --logo-max-height: 80px;
     --gap: 20px;
-    --duration: 28s;
-    /* slightly faster on mobile */
-  }
-}
-
-/* Accessibility: respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-    transform: none;
+    --duration: 90s;
   }
 }
