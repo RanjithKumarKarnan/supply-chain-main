@@ -19,7 +19,7 @@
 .marquee {
   --logo-max-height: 80px;
   --gap: clamp(32px, 5vw, 64px);
-  --duration: 30s;
+  --duration: 150s;
   /* Super long for continuous effect */
 
   position: relative;
@@ -56,7 +56,6 @@
   width: auto;
   max-width: 220px;
   object-fit: contain;
-  border-radius: 50%;
   transition: transform 0.3s ease;
 }
 

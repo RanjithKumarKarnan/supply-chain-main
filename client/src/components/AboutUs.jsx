@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import aboutUs from "/about-us.jpg";
+import aboutUsBg from "/abouts.png";
 
 const AboutUs = () => {
     useEffect(() => {
@@ -12,7 +14,7 @@ const AboutUs = () => {
         id="about"
             className="relative w-full bg-cover bg-center bg-no-repeat py-20 px-6 sm:px-10 lg:px-20 text-white"
             style={{
-                backgroundImage: "url('/abouts.png')",
+                backgroundImage: `url(${aboutUsBg})`,
             }}
             data-aos="fade-zoom-in"
             data-aos-easing="ease-in-back"
@@ -53,11 +55,11 @@ const AboutUs = () => {
                 <div className="w-full md:w-1/2">
                     <div className="relative w-full h-80 sm:h-140 rounded-lg overflow-hidden shadow-xl group">
                         <img
-                            src="/about-us.jpg"
+                            src={aboutUs}
                             alt="About Us"
                             className="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"
                         />
-                        <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-40 transition duration-300" />
+                        <div className="absolute inset-0 bg-opacity-30 group-hover:bg-opacity-40 transition duration-300" />
                     </div>
                 </div>
             </div>

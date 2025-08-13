@@ -1,36 +1,40 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import apparelImg from "/products/apparel.jpg";
+import bagsImg from "/products/bags.jpg";
+import officeImg from "/products/office.jpg";
+import techImg from "/products/tech.jpg";
+import drinkwareImg from "/products/botles.jpg";
 
-// Updated order — Apparel first, then Drinkware
 const cards = [
     {
         title: "Apparel",
-        image: "/apparel.jpg",
+        image: apparelImg,
         span: "Tees, hats & more",
         bgColor: "bg-green-600",
     },
     {
         title: "Bags",
-        image: "/bags.jpg",
+        image: bagsImg,
         span: "For office, gym, travel",
         bgColor: "bg-[#00bfff]",
     },
     {
         title: "Office",
-        image: "/office.jpg",
+        image: officeImg,
         span: "Desks, pens & notes",
         bgColor: "bg-purple-600",
     },
     {
         title: "Tech",
-        image: "/tech.jpg",
+        image: techImg,
         span: "Headphones & gadgets",
         bgColor: "bg-orange-500",
     },
     {
         title: "Drinkware",
-        image: "/botles.jpg",
+        image: drinkwareImg,
         span: "Hydration & more",
         bgColor: "bg-[#bf272f]",
     },
