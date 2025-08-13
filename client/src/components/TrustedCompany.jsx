@@ -1,16 +1,24 @@
 import React from "react";
 import "./TrustedCompany.css";
+import logoAlfaDAO from "/trusted-logo/AlfaDAO Logo.jpg";
+import logoAltlier from "/trusted-logo/Altlier-logo.png";
+import logoBera from "/trusted-logo/Bera Baddies Logo.png";
+import logoDoge from "/trusted-logo/Doge Logo.svg";
+import logoMew from "/trusted-logo/Mew Logo.jpg";
+import logoNarra from "/trusted-logo/narra.png";
+import logoToken from "/trusted-logo/token.svg";
+import logoWyk from "/trusted-logo/wyk logo.webp";
 
 const TrustedCompany = () => {
     const logos = [
-        "/trusted-logo/AlfaDAO Logo.jpg",
-        "/trusted-logo/Altlier-logo.png",
-        "/trusted-logo/Bera Baddies Logo.png",
-        "/trusted-logo/Doge Logo.svg",
-        "/trusted-logo/Mew Logo.jpg",
-        "/trusted-logo/narra.png",
-        "/trusted-logo/token.svg",
-        "/trusted-logo/wyk logo.webp",
+        logoAlfaDAO,
+        logoAltlier,
+        logoBera,
+        logoDoge,
+        logoMew,
+        logoNarra,
+        logoToken,
+        logoWyk,
     ];
 
     // Repeat enough times to cover at least 6 screens width
